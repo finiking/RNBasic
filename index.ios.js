@@ -15,9 +15,9 @@ import {
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import ChatScene from './src/scene/Chat';
-import SettingScene from './src/scene/Setting';
-import ListScene from './src/scene/List';
+import ChatScene from './src/scene/ChatScene';
+import SettingScene from './src/scene/SettingScene';
+import ListScene from './src/scene/ListScene';
 
 class HomeScene extends Component {
   // static ;

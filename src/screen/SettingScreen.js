@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, Button, AlertIOS, ImagePickerIOS } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-export default class SettingScene extends Component {
+export default class SettingScreen extends Component {
   constructor() {
     super()
 

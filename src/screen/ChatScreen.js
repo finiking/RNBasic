@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, Button, AlertIOS, ImagePickerIOS } from 'react-native';
 
-export default class ChatScene extends Component {
+export default class ChatScreen extends Component {
   constructor() {
     super()
 

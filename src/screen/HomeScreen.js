@@ -5,7 +5,7 @@ import api from '../api/index';
 
 const { width, height } = Dimensions.get("window");
 
-export default class ListScene extends Component {
+export default class HomeScreen extends Component {
   constructor() {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -15,7 +15,6 @@ export default class ListScene extends Component {
   }
 
   componentDidMount() {
-      // this.listView.startHeaderRefreshing();
     this.getData()
   }
 
@@ -51,7 +50,6 @@ export default class ListScene extends Component {
               <View style={styles.itemRecommend}>
                 <Text style={styles.recTitle}>[AI导购推荐]</Text>
                 <Text numberOfLines={2} style={styles.recContent}>{row.productPromoReason}</Text>
-              
               </View>
               <View style={styles.itemBtnWrap} onPress={()=>{}}>
                 <Icons
@@ -79,7 +77,17 @@ export default class ListScene extends Component {
 
   async requestList() {
         try {
-            let response = await fetch(api.list)
+            let response = await fetch(api.list, {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                page: 1,
+                size: 10,
+              })
+            })
             let json = await response.json()
             let list = json.result.map(item => {
               let prices = (item.productPrice+'').split('.')

@@ -13,13 +13,15 @@ import {
   Button,
   Platform,
 } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Badge } from "react-native-elements";
 
 import ChatScreen from './src/screen/ChatScreen';
 import SettingScreen from './src/screen/SettingScreen';
 import HomeScreen from './src/screen/HomeScreen';
 import FavScreen from './src/screen/FavScreen';
+import InfiniteScrollScreen from './src/screen/InfiniteScrollScreen';
 
 
 
@@ -81,7 +83,7 @@ export default RNBasic = TabNavigator({
   HomeTab: {
     screen: HomeScreen,
     navigationOptions: {
-      tabBarLabel: 'Home',
+      tabBarLabel: '首页',
       tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
             name={focused ? 'ios-home' : 'ios-home-outline'}
@@ -94,10 +96,10 @@ export default RNBasic = TabNavigator({
    ListTab: {
     screen: HomeTab,
     navigationOptions: {
-      tabBarLabel: 'List',
+      tabBarLabel: '购物车',
       tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
-            name={focused ? 'ios-stats' : 'ios-stats-outline'}
+            name={focused ? 'ios-cart' : 'ios-cart-outline'}
             size={26}
             style={{ color: tintColor }}
           />
@@ -105,9 +107,9 @@ export default RNBasic = TabNavigator({
     }
   },
   FavoriteTab: {
-    screen: SettingTab,
+    screen: InfiniteScrollScreen,
     navigationOptions: {
-      tabBarLabel: 'Favorite',
+      tabBarLabel: '清单',
       tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
             name={focused ? 'ios-heart' : 'ios-heart-outline'}
@@ -120,14 +122,29 @@ export default RNBasic = TabNavigator({
   SettingTab: {
     screen: SettingTab,
     navigationOptions: {
-      tabBarLabel: 'Setting',
+      tabBarLabel: '我',
       tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
-            name={focused ? 'ios-settings' : 'ios-settings-outline'}
+            name={focused ? 'ios-contact' : 'ios-contact-outline'}
             size={26}
             style={{ color: tintColor }}
           />
         ),
+    }
+  },
+},
+{
+  tabBarComponent: TabBarBottom,
+  tabBarPosition: 'bottom',
+  // swipeEnabled: true,
+  animationEnabled: true,
+  lazy: true,
+  tabBarOptions: {
+    activeTintColor: '#fd472b',
+    inactiveTintColor: '#979797',
+    style: { backgroundColor: '#ffffff' },
+    labelStyle: {
+      marginBottom: 5
     }
   },
 })
